@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   BorderStyle = bsSingle
-  Caption = 'Form1'
+  Caption = 'Checkbook Calculator'
   ClientHeight = 816
   ClientWidth = 700
   Color = clTomato
