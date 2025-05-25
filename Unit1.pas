@@ -70,6 +70,9 @@ type
     { Public declarations }
   end;
 
+  const
+  registryId: String = 'EagleAglow';
+
 var
   Form1: TForm1;
   centsBalance: Int64;
@@ -203,8 +206,8 @@ begin
   try
     reg.RootKey := HKEY_CURRENT_USER;
     // CreateKey does nothing if already present
-    reg.CreateKey('\Software\AtomicWizard\CheckBook');
-    if reg.OpenKey('\Software\AtomicWizard\CheckBook', true) then
+    reg.CreateKey('\Software\' + registryId + '\CheckBook');
+    if reg.OpenKey('\Software\' + registryId + '\CheckBook', true) then
     begin
       if reg.ValueExists('Balance') then
       begin
@@ -231,7 +234,7 @@ begin
     reg := TRegistry.Create;
     try
       reg.RootKey := HKEY_CURRENT_USER;
-      if reg.OpenKey('Software\AtomicWizard\CheckBook', true) then
+      if reg.OpenKey('\Software\' + registryId + '\CheckBook', true) then
       begin
         reg.WriteInt64('Balance', amount);
         reg.CloseKey;
